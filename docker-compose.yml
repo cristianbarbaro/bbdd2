@@ -1,0 +1,30 @@
+version: '3'
+services:
+  db:
+    image: postgres
+    container_name: postgres_db
+    volumes:
+      - ./tmp/db:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: ${DATABASE_USER}
+      POSTGRES_PASSWORD: ${DATABASE_PASSWORD}
+  web:
+    build: .
+    container_name: farms
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    volumes:
+      - .:/var/www/farms
+    ports:
+      - "3000:3000"
+    depends_on:
+      - db
+  adminer:
+    image: dockette/adminer
+    container_name: adminer_bd2
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      ADMINER_DEFAULT_SERVER: db
+
