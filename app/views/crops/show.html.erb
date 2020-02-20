@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @crop.comment %>
+</p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @crop.amount %>
+</p>
+
+<p>
+  <strong>Variety:</strong>
+  <%= @crop.variety %>
+</p>
+
+<p>
+  <strong>Plot:</strong>
+  <%= @crop.plot %>
+</p>
+
+<%= link_to 'Edit', edit_farm_plot_crop_path(@farm, @plot, @crop) %> |
+<%= link_to 'Back', farm_plot_crops_path %>

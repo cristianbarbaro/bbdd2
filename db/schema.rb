@@ -10,10 +10,21 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_200817) do
+ActiveRecord::Schema.define(version: 2020_02_20_202027) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "crops", force: :cascade do |t|
+    t.text "comment"
+    t.float "amount"
+    t.bigint "variety_id"
+    t.bigint "plot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plot_id"], name: "index_crops_on_plot_id"
+    t.index ["variety_id"], name: "index_crops_on_variety_id"
+  end
 
   create_table "farms", force: :cascade do |t|
     t.string "name", null: false
@@ -77,6 +88,8 @@ ActiveRecord::Schema.define(version: 2020_02_20_200817) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "crops", "plots"
+  add_foreign_key "crops", "varieties"
   add_foreign_key "plantations", "plots"
   add_foreign_key "plantations", "species"
   add_foreign_key "plots", "farms"
