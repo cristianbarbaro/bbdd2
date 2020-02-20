@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Identifier:</strong>
+  <%= @plot.identifier %>
+</p>
+
+<p>
+  <strong>Surface:</strong>
+  <%= @plot.surface %>
+</p>
+
+<p>
+  <strong>Greenhouse:</strong>
+  <%= @plot.greenhouse %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @plot.description %>
+</p>
+
+<p>
+  <strong>Farm:</strong>
+  <%= @plot.farm %>
+</p>
+
+<%= link_to 'Edit', edit_farm_plot_path(@farm, @plot) %> |
+<%= link_to 'Back', farm_plots_path %>
