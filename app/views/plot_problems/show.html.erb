@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Comment:</strong>
+  <%= @plot_problem.comment %>
+</p>
+
+<p>
+  <strong>Problem:</strong>
+  <%= @plot_problem.problem %>
+</p>
+
+<p>
+  <strong>Plot:</strong>
+  <%= @plot_problem.plot %>
+</p>
+
+<%= link_to 'Edit', edit_farm_plot_plot_problem_path(@farm, @plot, @plot_problem) %> |
+<%= link_to 'Back', farm_plot_plot_problems_path %>

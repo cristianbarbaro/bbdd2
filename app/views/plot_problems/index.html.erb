@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Plot Problems</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Problem</th>
+      <th>Plot</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plot_problems.each do |plot_problem| %>
+      <tr>
+        <td><%= plot_problem.comment %></td>
+        <td><%= plot_problem.problem %></td>
+        <td><%= plot_problem.plot %></td>
+        <td><%= link_to 'Show', [@farm, @plot, plot_problem] %></td>
+        <td><%= link_to 'Edit', edit_farm_plot_plot_problem_path(@farm, @farm, plot_problem) %></td>
+        <td><%= link_to 'Destroy', [@farm, @plot, plot_problem], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plot Problem', new_farm_plot_plot_problem_path %>
