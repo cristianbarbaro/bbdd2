@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Plantations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Amount</th>
+      <th>Species</th>
+      <th>Plot</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @plantations.each do |plantation| %>
+      <tr>
+        <td><%= plantation.comment %></td>
+        <td><%= plantation.amount %></td>
+        <td><%= plantation.species %></td>
+        <td><%= plantation.plot %></td>
+        <td><%= link_to 'Show', [@farm, @plot, plantation] %></td>
+        <td><%= link_to 'Edit', edit_farm_plot_plantation_path(@farm, @plot, plantation) %></td>
+        <td><%= link_to 'Destroy', [@farm, @plot, plantation], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Plantation', new_farm_plot_plantation_path %>

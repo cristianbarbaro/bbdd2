@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   resources :farms do
-    resources :plots
+    resources :plots do
+      resources :plantations
+    end
   end
   resources :products
   resources :problems
