@@ -62,6 +62,6 @@ class PlotProblemsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plot_problem_params
-      params.require(:plot_problem).permit(:comment, :problem_id, :user_id)
+      params.require(:plot_problem).permit(:comment, :problem_id)
     end
 end

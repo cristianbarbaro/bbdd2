@@ -62,6 +62,6 @@ class PlantationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plantation_params
-      params.require(:plantation).permit(:comment, :amount, :species_id, :user_id)
+      params.require(:plantation).permit(:comment, :amount, :species_id)
     end
 end

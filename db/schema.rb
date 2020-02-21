@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_20_203947) do
+ActiveRecord::Schema.define(version: 2020_02_21_113924) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -75,6 +75,17 @@ ActiveRecord::Schema.define(version: 2020_02_20_203947) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_applications", force: :cascade do |t|
+    t.float "amount", null: false
+    t.text "comment"
+    t.bigint "product_id"
+    t.bigint "plot_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["plot_id"], name: "index_product_applications_on_plot_id"
+    t.index ["product_id"], name: "index_product_applications_on_product_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.text "composition"
@@ -105,4 +116,6 @@ ActiveRecord::Schema.define(version: 2020_02_20_203947) do
   add_foreign_key "plot_problems", "plots"
   add_foreign_key "plot_problems", "problems"
   add_foreign_key "plots", "farms"
+  add_foreign_key "product_applications", "plots"
+  add_foreign_key "product_applications", "products"
 end
