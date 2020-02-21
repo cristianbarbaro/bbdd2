@@ -1,4 +1,4 @@
-<%= form_with(model: [farm, plot, plot_problem], local: true) do |form| %>
+<%= bootstrap_form_with(model: [farm, plot, plot_problem], local: true) do |form| %>
   <% if plot_problem.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(plot_problem.errors.count, "error") %> prohibited this plot_problem from being saved:</h2>
@@ -11,22 +11,11 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :comment %>
-    <%= form.text_area :comment %>
-  </div>
+  <%= form.text_area :comment %>
 
-  <div class="field">
-    <%= form.label :problem_id %>
-    <%= form.text_field :problem_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :plot_id %>
-    <%= form.text_field :plot_id %>
-  </div>
+  <%= form.select(:type_problem_id, problems_for_select, :prompt => 'Select') %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Create", class: "btn btn-succes" %>
   </div>
 <% end %>

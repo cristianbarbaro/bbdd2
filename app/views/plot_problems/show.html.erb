@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Comment:</strong>
   <%= @plot_problem.comment %>
@@ -12,8 +10,10 @@
 
 <p>
   <strong>Plot:</strong>
-  <%= @plot_problem.plot %>
+  <%= @plot_problem.plot.identifier %>
 </p>
 
-<%= link_to 'Edit', edit_farm_plot_plot_problem_path(@farm, @plot, @plot_problem) %> |
-<%= link_to 'Back', farm_plot_plot_problems_path %>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_farm_plot_plot_problem_path(@farm, @plot, @problem), class: "btn btn-success" %>
+  <%= link_to 'Back', farm_plot_plot_problems_path, class: "btn btn-default" %>
+</div>

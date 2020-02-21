@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root :to => "farms#index"
   resources :farms do
     resources :plots do
       resources :product_applications

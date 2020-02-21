@@ -2,5 +2,8 @@
 
 <%= render 'form', farm: @farm %>
 
-<%= link_to 'Show', @farm %> |
-<%= link_to 'Back', farms_path %>
+<div class="pull-right">
+    <%= link_to 'Delete', @farm, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %>
+    <%= link_to 'Show', @farm, class: "btn-primary btn" %>
+    <%= link_to 'Back', :back, class: "btn-default btn" %>
+</div>

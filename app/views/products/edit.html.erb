@@ -2,5 +2,8 @@
 
 <%= render 'form', product: @product %>
 
-<%= link_to 'Show', @product %> |
-<%= link_to 'Back', products_path %>
+<div class="pull-right">
+    <%= link_to 'Delete', @product, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %>
+    <%= link_to 'Show', @product, class: "btn btn-primary" %>
+    <%= link_to 'Back', :back, class: "btn btn-default" %>
+</div>

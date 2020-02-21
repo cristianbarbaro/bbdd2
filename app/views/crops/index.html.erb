@@ -1,15 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Crops</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Comment</th>
       <th>Amount</th>
       <th>Variety</th>
       <th>Plot</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -18,16 +16,21 @@
       <tr>
         <td><%= crop.comment %></td>
         <td><%= crop.amount %></td>
-        <td><%= crop.variety %></td>
-        <td><%= crop.plot %></td>
-        <td><%= link_to 'Show', [@farm, @plot, crop] %></td>
-        <td><%= link_to 'Edit', edit_farm_plot_crop_path(@farm, @plot, crop) %></td>
-        <td><%= link_to 'Destroy', [@farm, @plot, crop], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= crop.variety.name %></td>
+        <td><%= crop.plot.identifier %></td>
+        <td>
+          <%= link_to '', [@farm, @plot, crop], class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>
+          <%= link_to '', edit_farm_plot_crop_path(@farm, @plot, crop), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<hr>
 
-<%= link_to 'New Crop', new_farm_plot_crop_path %>
+<div class="pull-right">
+  <div class="btn-right">
+    <%= link_to 'New', new_farm_plot_crop_path, class: "btn btn-success" %>
+  </div>
+</div>

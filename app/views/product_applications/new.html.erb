@@ -2,4 +2,6 @@
 
 <%= render 'form', product_application: @product_application, plot: @plot, farm: @farm %>
 
-<%= link_to 'Back', farm_plot_product_applications_path %>
+<div class="pull-right">
+    <%= link_to 'Cancel', farm_plot_product_applications_path, class: "btn btn-danger" %>
+</div>

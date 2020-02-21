@@ -1,16 +1,13 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Plots</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Identifier</th>
       <th>Surface</th>
       <th>Greenhouse</th>
-      <th>Description</th>
       <th>Farm</th>
-      <th colspan="3"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -20,16 +17,20 @@
         <td><%= plot.identifier %></td>
         <td><%= plot.surface %></td>
         <td><%= plot.greenhouse %></td>
-        <td><%= plot.description %></td>
-        <td><%= plot.farm %></td>
-        <td><%= link_to 'Show', [@farm, plot] %></td>
-        <td><%= link_to 'Edit', edit_farm_plot_path(@farm, plot) %></td>
-        <td><%= link_to 'Destroy', [@farm, plot], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= plot.farm.name %></td>
+        <td>
+          <%= link_to '', [@farm, plot], class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>
+          <%= link_to '', edit_farm_plot_path(@farm, plot), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<hr>
 
-<%= link_to 'New Plot', new_farm_plot_path(@farm) %>
+<div class="pull-right">
+  <div class="btn-right">
+    <%= link_to 'New', new_farm_plot_path(@farm), class: "btn btn-success" %>
+  </div>
+</div>

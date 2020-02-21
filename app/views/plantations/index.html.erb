@@ -1,33 +1,34 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Plantations</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Comment</th>
       <th>Amount</th>
       <th>Species</th>
       <th>Plot</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
   <tbody>
     <% @plantations.each do |plantation| %>
       <tr>
-        <td><%= plantation.comment %></td>
         <td><%= plantation.amount %></td>
-        <td><%= plantation.species %></td>
-        <td><%= plantation.plot %></td>
-        <td><%= link_to 'Show', [@farm, @plot, plantation] %></td>
-        <td><%= link_to 'Edit', edit_farm_plot_plantation_path(@farm, @plot, plantation) %></td>
-        <td><%= link_to 'Destroy', [@farm, @plot, plantation], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= plantation.species.name %></td>
+        <td><%= plantation.plot.identifier %></td>
+        <td>
+          <%= link_to '', [@farm, @plot, plantation], class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>
+          <%= link_to '', edit_farm_plot_plantation_path(@farm, @plot, plantation), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<hr>
 
-<%= link_to 'New Plantation', new_farm_plot_plantation_path %>
+<div class="pull-right">
+  <div class="btn-right">
+    <%= link_to 'Show', new_farm_plot_plantation_path, class: "btn btn-success" %>
+  </div>
+</div>

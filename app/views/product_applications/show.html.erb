@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>amount:</strong>
   <%= @product_application.amount %>
@@ -17,8 +15,10 @@
 
 <p>
   <strong>Plot:</strong>
-  <%= @product_application.plot %>
+  <%= @product_application.plot.identifier %>
 </p>
 
-<%= link_to 'Edit', edit_farm_plot_product_application_path(@farm, @plot, @product_application) %> |
-<%= link_to 'Back', farm_plot_product_applications_path %>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_farm_plot_product_application_path(@farm, @plot, @product_application), class: "btn btn-success" %>
+  <%= link_to 'Back', farm_plot_product_applications_path, class: "btn btn-default" %>
+</div>

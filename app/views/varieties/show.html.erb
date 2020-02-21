@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Name:</strong>
   <%= @variety.name %>
@@ -20,5 +18,7 @@
   <%= @variety.description %>
 </p>
 
-<%= link_to 'Edit', edit_variety_path(@variety) %> |
-<%= link_to 'Back', varieties_path %>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_variety_path(@variety), class: "btn btn-success" %>
+  <%= link_to 'Back', varieties_path, class: "btn btn-default" %>
+</div>

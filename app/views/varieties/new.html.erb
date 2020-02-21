@@ -2,4 +2,6 @@
 
 <%= render 'form', variety: @variety %>
 
-<%= link_to 'Back', varieties_path %>
+<div class="pull-right">
+    <%= link_to 'Cancel', varieties_path, class: "btn btn-danger" %>
+</div>

@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Identifier:</strong>
   <%= @plot.identifier %>
@@ -22,8 +20,46 @@
 
 <p>
   <strong>Farm:</strong>
-  <%= @plot.farm %>
+  <%= @plot.farm.name %>
 </p>
 
-<%= link_to 'Edit', edit_farm_plot_path(@farm, @plot) %> |
-<%= link_to 'Back', farm_plots_path %>
+<p>
+  <strong><%= link_to "Plantations", farm_plot_plantations_path(@farm, @plot), target: :_blank %></strong>
+  <!--<ul>
+    <% @plot.plantations.each do |plantation| %>
+      <li><%= link_to "#{plantation.id}", [@farm, @plot, plantation], target: :_blank %></li>
+    <% end %>  
+  </ul>-->
+</p>
+
+<p>
+  <strong><%= link_to "Problems", farm_plot_plot_problems_path(@farm, @plot), target: :_blank %></strong>
+  <!--<ul>
+    <% @plot.plot_problems.each do |plot_problems| %>
+      <li><%= link_to "#{plot_problems.id}", [@farm, @plot, problem], target: :_blank %></li>
+    <% end %>  
+  </ul>-->
+</p>
+
+<p>
+  <strong><%= link_to "Applications", farm_plot_product_applications_path(@farm, @plot), target: :_blank %></strong>
+  <!--<ul>
+    <% @plot.product_applications.each do |application| %>
+      <li><%= link_to "#{application.id}", [@farm, @plot, application], target: :_blank %></li>
+    <% end %>  
+  </ul>-->
+</p>
+
+<p>
+  <strong><%= link_to "Crops", farm_plot_crops_path(@farm, @plot), target: :_blank %></strong>
+  <!--<ul>
+    <% @plot.crops.each do |crop| %>
+      <li><%= link_to "#{crop.id}", [@farm, @plot, crop], target: :_blank %></li>
+    <% end %>  
+  </ul>-->
+</p>
+
+<div class="pull-right">
+  <%= link_to 'Edit', edit_farm_plot_path(@farm, @plot), class: "btn btn-success" %>
+  <%= link_to 'Back', farm_plots_path, class: "btn btn-default" %>
+</div>

@@ -2,5 +2,8 @@
 
 <%= render 'form', variety: @variety %>
 
-<%= link_to 'Show', @variety %> |
-<%= link_to 'Back', varieties_path %>
+<div class="pull-right">
+    <%= link_to 'Delete', @variety, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %>
+    <%= link_to 'Show', @variety, class: "btn btn-primary" %>
+    <%= link_to 'Back', :back, class: "btn btn-default" %>
+</div>

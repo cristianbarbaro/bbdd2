@@ -62,3 +62,9 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 gem 'dotenv-rails'
+
+gem 'bootstrap-sass', '~> 3.4.1'
+
+gem 'bootstrap_form', '~> 4.0'
+
+gem 'jquery-rails'

@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Product Applications</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>amount</th>
@@ -19,15 +17,20 @@
         <td><%= product_application.amount %></td>
         <td><%= product_application.comment %></td>
         <td><%= product_application.product %></td>
-        <td><%= product_application.plot %></td>
-        <td><%= link_to 'Show', [@farm, @plot, product_application] %></td>
-        <td><%= link_to 'Edit', edit_farm_plot_product_application_path(@farm, @plot, product_application) %></td>
-        <td><%= link_to 'Destroy', [@farm, @plot, product_application], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= product_application.plot.identifier %></td>
+        <td>
+          <%= link_to '', [@farm, @plot, product_application], class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>
+          <%= link_to '', edit_farm_plot_product_application_path(@farm, @plot, product_application), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
+<hr>
 
-<%= link_to 'New Product Application', new_farm_plot_product_application_path %>
+<div class="pull-right">
+  <div class="btn-right">
+    <%= link_to 'New', new_farm_plot_product_application_path, class: "btn btn-success" %>
+  </div>
+</div>

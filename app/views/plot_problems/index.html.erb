@@ -1,14 +1,12 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Plot Problems</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
       <th>Comment</th>
       <th>Problem</th>
       <th>Plot</th>
-      <th colspan="3"></th>
+      <th>Actions</th>
     </tr>
   </thead>
 
@@ -16,16 +14,19 @@
     <% @plot_problems.each do |plot_problem| %>
       <tr>
         <td><%= plot_problem.comment %></td>
-        <td><%= plot_problem.problem %></td>
-        <td><%= plot_problem.plot %></td>
-        <td><%= link_to 'Show', [@farm, @plot, plot_problem] %></td>
-        <td><%= link_to 'Edit', edit_farm_plot_plot_problem_path(@farm, @farm, plot_problem) %></td>
-        <td><%= link_to 'Destroy', [@farm, @plot, plot_problem], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= plot_problem.problem.name %></td>
+        <td><%= plot_problem.plot.identifier %></td>
+        <td>
+          <%= link_to '', [@farm, @plot, problem], class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>
+          <%= link_to '', edit_farm_plot_plot_problem_path(@farm, @plot, problem), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Plot Problem', new_farm_plot_plot_problem_path %>
+<div class="pull-right">
+  <div class="btn-right">
+    <%= link_to 'New', new_farm_plot_plot_problem_path, class: "btn btn-success" %>
+  </div>
+</div>

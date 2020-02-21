@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <strong>Comment:</strong>
   <%= @crop.comment %>
@@ -12,13 +10,15 @@
 
 <p>
   <strong>Variety:</strong>
-  <%= @crop.variety %>
+  <%= @crop.variety.name %>
 </p>
 
 <p>
   <strong>Plot:</strong>
-  <%= @crop.plot %>
+  <%= @crop.plot.identifier %>
 </p>
 
-<%= link_to 'Edit', edit_farm_plot_crop_path(@farm, @plot, @crop) %> |
-<%= link_to 'Back', farm_plot_crops_path %>
+<div class="pull-right">
+  <%= link_to 'Edit', edit_farm_plot_crop_path(@farm, @plot, @crop), class: "btn btn-success" %>
+  <%= link_to 'Back', farm_plot_crops_path, class: "btn btn-default" %>
+</div>
