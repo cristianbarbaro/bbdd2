@@ -20,7 +20,7 @@
         <td><%= problem.description %></td>
         <td>
           <%= link_to '', problem, class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>
-          <%= link_to '', edit_problem_path(type_problem), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
+          <%= link_to '', edit_problem_path(problem), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
         </td>
       </tr>
     <% end %>
