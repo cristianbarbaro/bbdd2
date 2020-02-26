@@ -3,7 +3,7 @@ class FarmsController < ApplicationController
 
   # GET /farms
   def index
-    @farms = Farm.all
+    @farms = current_user.farms
   end
 
   # GET /farms/1
@@ -21,9 +21,10 @@ class FarmsController < ApplicationController
 
   # POST /farms
   def create
-    @farm = Farm.new(farm_params)
+    @farm = Farm.create(farm_params)
 
     if @farm.save
+      current_user.farms << @farm
       redirect_to @farm, notice: 'Farm was successfully created.'
     else
       render :new
