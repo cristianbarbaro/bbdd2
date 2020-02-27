@@ -35,8 +35,8 @@
 <p>
   <strong><%= link_to "Problems", farm_plot_plot_problems_path(@farm, @plot), target: :_blank %></strong>
   <!--<ul>
-    <% @plot.plot_problems.each do |plot_problems| %>
-      <li><%= link_to "#{plot_problems.id}", [@farm, @plot, problem], target: :_blank %></li>
+    <% @plot.plot_problems.each do |plot_problem| %>
+      <li><%= link_to "#{plot_problem.id}", [@farm, @plot, plot_problem], target: :_blank %></li>
     <% end %>  
   </ul>-->
 </p>

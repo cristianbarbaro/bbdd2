@@ -16,7 +16,7 @@
       <tr>
         <td><%= product_application.amount %></td>
         <td><%= product_application.comment %></td>
-        <td><%= product_application.product %></td>
+        <td><%= product_application.product.name %></td>
         <td><%= product_application.plot.identifier %></td>
         <td>
           <%= link_to '', [@farm, @plot, product_application], class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>

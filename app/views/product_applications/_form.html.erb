@@ -17,12 +17,7 @@
 
   <%= form.select(:product_id, products_for_select, :prompt => 'Select') %>
 
-  <div class="field">
-    <%= form.label :plot_id %>
-    <%= form.text_field :plot_id %>
-  </div>
-
   <div class="actions">
-    <%= form.submit "Create", class: "btn btn-success" %>
+    <%= form.submit "Save", class: "btn btn-success" %>
   </div>
 <% end %>

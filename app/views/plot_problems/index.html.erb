@@ -17,8 +17,8 @@
         <td><%= plot_problem.problem.name %></td>
         <td><%= plot_problem.plot.identifier %></td>
         <td>
-          <%= link_to '', [@farm, @plot, problem], class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>
-          <%= link_to '', edit_farm_plot_plot_problem_path(@farm, @plot, problem), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
+          <%= link_to '', [@farm, @plot, plot_problem], class:'glyphicon glyphicon-eye-open btn btn-xs btn-default', title: 'Show' %>
+          <%= link_to '', edit_farm_plot_plot_problem_path(@farm, @plot, plot_problem), class:'glyphicon glyphicon-pencil btn btn-xs btn-default', title: 'Edit' %>
         </td>
       </tr>
     <% end %>

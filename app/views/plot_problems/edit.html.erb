@@ -3,7 +3,7 @@
 <%= render 'form', plot_problem: @plot_problem, plot: @plot, farm: @farm %>
 
 <div class="pull-right">
-    <%= link_to 'Delete', [@farm, @plot, @problem], class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %>
-    <%= link_to 'Show', [@farm, @plot, @problem], class: "btn btn-primary" %>
+    <%= link_to 'Delete', [@farm, @plot, @plot_problem], class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' }, title: 'Delete' %>
+    <%= link_to 'Show', [@farm, @plot, @plot_problem], class: "btn btn-primary" %>
     <%= link_to 'Back', :back, class: "btn btn-default" %>
 </div>

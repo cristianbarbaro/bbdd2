@@ -5,7 +5,7 @@
 
 <p>
   <strong>Problem:</strong>
-  <%= @plot_problem.problem %>
+  <%= @plot_problem.problem.name %>
 </p>
 
 <p>
@@ -14,6 +14,6 @@
 </p>
 
 <div class="pull-right">
-  <%= link_to 'Edit', edit_farm_plot_plot_problem_path(@farm, @plot, @problem), class: "btn btn-success" %>
+  <%= link_to 'Edit', edit_farm_plot_plot_problem_path(@farm, @plot, @plot_problem), class: "btn btn-success" %>
   <%= link_to 'Back', farm_plot_plot_problems_path, class: "btn btn-default" %>
 </div>
