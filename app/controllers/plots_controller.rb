@@ -52,10 +52,6 @@ class PlotsController < ApplicationController
       @plot = @farm.plots.find(params[:id])
     end
 
-    def set_farm
-      @farm = Farm.find(params[:farm_id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def plot_params
       params.require(:plot).permit(:identifier, :description, :surface, :greenhouse)

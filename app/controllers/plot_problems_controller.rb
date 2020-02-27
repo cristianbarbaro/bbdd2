@@ -52,14 +52,6 @@ class PlotProblemsController < ApplicationController
       @plot_problem = @plot.plot_problems.find(params[:id])
     end
 
-    def set_farm
-      @farm = Farm.find(params[:farm_id])
-    end
-
-    def set_plot
-      @plot = @farm.plots.find(params[:plot_id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def plot_problem_params
       params.require(:plot_problem).permit(:comment, :problem_id)

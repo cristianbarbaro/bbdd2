@@ -52,14 +52,6 @@ class CropsController < ApplicationController
       @crop = @plot.crops.find(params[:id])
     end
 
-    def set_farm
-      @farm = Farm.find(params[:farm_id])
-    end
-
-    def set_plot
-      @plot = @farm.plots.find(params[:plot_id])
-    end
-
     # Never trust parameters from the scary internet, only allow the white list through.
     def crop_params
       params.require(:crop).permit(:comment, :amount, :variety_id)

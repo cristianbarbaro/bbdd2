@@ -50,6 +50,7 @@ class FarmsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_farm
       @farm = Farm.find(params[:id])
+      head 403 unless current_user.farms.include?(@farm)
     end
 
     # Only allow a list of trusted parameters through.
