@@ -1,0 +1,14 @@
+<p>
+<strong>Email:</strong>
+<%= @user.email %>
+</p>
+
+<p>
+<strong>Administrator:</strong>
+<%= @user.has_role? :admin %>
+</p>
+
+
+<div class="pull-right">
+    <%= link_to 'Back', users_path, class: "btn btn-default" %>
+</div>
