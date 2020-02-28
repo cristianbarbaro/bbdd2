@@ -1,4 +1,5 @@
 class SpeciesController < ApplicationController
+  before_action :authorized_admin
   before_action :set_species, only: [:show, :edit, :update, :destroy]
 
   # GET /species

@@ -1,4 +1,5 @@
 class VarietiesController < ApplicationController
+  before_action :authorized_admin
   before_action :set_variety, only: [:show, :edit, :update, :destroy]
 
   # GET /varieties

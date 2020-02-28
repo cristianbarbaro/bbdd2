@@ -70,3 +70,5 @@ gem 'bootstrap_form', '~> 4.0'
 gem 'jquery-rails'
 
 gem 'devise'
+
+gem 'rolify'
