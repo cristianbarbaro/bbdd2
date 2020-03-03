@@ -42,6 +42,10 @@ class SpeciesController < ApplicationController
 
   # DELETE /species/1
   def destroy
+    if @species.plantations.length > 0
+      redirect_to @species, notice: 'Species could not be destroyed. Has plantations associated.'
+      return
+    end
     @species.destroy
     redirect_to species_index_url, notice: 'Species was successfully destroyed.'
   end

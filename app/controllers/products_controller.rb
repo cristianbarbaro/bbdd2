@@ -42,6 +42,10 @@ class ProductsController < ApplicationController
 
   # DELETE /products/1
   def destroy
+    if @product.product_applications.length > 0
+      redirect_to @product, notice: 'Product could not be destroyed. Has products applications associated.'
+      return
+    end
     @product.destroy
     redirect_to products_url, notice: 'Product was successfully destroyed.'
   end

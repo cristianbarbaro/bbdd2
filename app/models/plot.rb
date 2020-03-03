@@ -1,9 +1,9 @@
 class Plot < ApplicationRecord
   belongs_to :farm
-  has_many :plantations
-  has_many :plot_problems
-  has_many :crops
-  has_many :product_applications
+  has_many :plantations, dependent: :destroy
+  has_many :plot_problems, dependent: :destroy
+  has_many :crops, dependent: :destroy
+  has_many :product_applications, dependent: :destroy
 
   validates :identifier, :surface, :farm_id, presence: true
   validates :greenhouse, inclusion: [true, false]

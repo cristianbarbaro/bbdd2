@@ -42,8 +42,12 @@ class ProblemsController < ApplicationController
 
   # DELETE /problems/1
   def destroy
-    @problem.destroy
-    redirect_to problems_url, notice: 'Problem was successfully destroyed.'
+    if @problem.plot_problems.length > 0
+      redirect_to @problem, notice: 'Problem could not be destroyed. Has crops associated.'
+      return
+    end
+      @problem.destroy
+      redirect_to problems_url, notice: 'Problem was successfully destroyed.'
   end
 
   private

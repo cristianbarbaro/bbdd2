@@ -43,6 +43,10 @@ class VarietiesController < ApplicationController
 
   # DELETE /varieties/1
   def destroy
+    if @variety.crops.length > 0
+      redirect_to @variety, notice: 'Variety could not be destroyed. Has crops associated.'
+      return
+    end
     @variety.destroy
     redirect_to varieties_url, notice: 'Variety was successfully destroyed.'
   end
