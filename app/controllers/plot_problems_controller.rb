@@ -25,7 +25,8 @@ class PlotProblemsController < ApplicationController
   def create
     @plot_problem = @plot.plot_problems.build(plot_problem_params)
     if @plot_problem.save
-      redirect_to farm_plot_plot_problems_path(@farm, @plot), notice: 'Problem was successfully created.'
+      flash[:success] = 'Problem was successfully created.'
+      redirect_to farm_plot_plot_problems_path(@farm, @plot)
     else
       render :new
     end
@@ -34,7 +35,8 @@ class PlotProblemsController < ApplicationController
   # PATCH/PUT /farms/:farm_id/plots/:plot_id/plot_problems/:id
   def update
     if @plot_problem.update(plot_problem_params)
-      redirect_to farm_plot_plot_problem_path(@farm, @plot), notice: 'Problem was successfully updated.'
+      flash[:success] = 'Problem was successfully updated.'
+      redirect_to farm_plot_plot_problem_path(@farm, @plot)
     else
       render :edit
     end
@@ -43,7 +45,8 @@ class PlotProblemsController < ApplicationController
   # DELETE /farms/:farm_id/plots/:plot_id/plot_problems/:id
   def destroy
     @plot_problem.destroy
-    redirect_to farm_plot_plot_problems_path, notice: 'Problem was successfully destroyed.'
+    flash[:success] = 'Problem was successfully destroyed.'
+    redirect_to farm_plot_plot_problems_path
   end
 
   private

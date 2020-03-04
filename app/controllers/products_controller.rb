@@ -25,7 +25,8 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
 
     if @product.save
-      redirect_to @product, notice: 'Product was successfully created.'
+      flash[:success] = 'Product was successfully created.'
+      redirect_to @product
     else
       render :new
     end
@@ -34,7 +35,8 @@ class ProductsController < ApplicationController
   # PATCH/PUT /products/1
   def update
     if @product.update(product_params)
-      redirect_to @product, notice: 'Product was successfully updated.'
+      flash[:success] = 'Product was successfully updated.'
+      redirect_to @product
     else
       render :edit
     end
@@ -43,11 +45,13 @@ class ProductsController < ApplicationController
   # DELETE /products/1
   def destroy
     if @product.product_applications.length > 0
-      redirect_to @product, notice: 'Product could not be destroyed. Has products applications associated.'
+      flash[:danger] = 'Product could not be destroyed. Has products applications associated.'
+      redirect_to @product
       return
     end
     @product.destroy
-    redirect_to products_url, notice: 'Product was successfully destroyed.'
+    flash[:success] = 'Product was successfully destroyed.'
+    redirect_to products_url
   end
 
   private

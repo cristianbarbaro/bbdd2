@@ -25,7 +25,8 @@ class CropsController < ApplicationController
   def create
     @crop = @plot.crops.build(crop_params)
     if @crop.save
-      redirect_to farm_plot_crops_path(@farm, @plot), notice: 'Crop was successfully created.'
+      flash[:success] = 'Crop was successfully created.'
+      redirect_to farm_plot_crops_path(@farm, @plot)
     else
       render :new
     end
@@ -34,7 +35,8 @@ class CropsController < ApplicationController
   # PATCH/PUT /farms/:farm_id/plots/:plot_id/crops/:id
   def update
     if @crop.update(crop_params)
-      redirect_to farm_plot_crop_path(@farm, @plot), notice: 'Crop was successfully updated.'
+      flash[:success] = 'Crop was successfully updated.'
+      redirect_to farm_plot_crop_path(@farm, @plot)
     else
       render :edit
     end
@@ -43,7 +45,8 @@ class CropsController < ApplicationController
   # DELETE /farms/:farm_id/plots/:plot_id/crops/:id
   def destroy
     @crop.destroy
-    redirect_to farm_plot_crops_path, notice: 'Crop was successfully destroyed.'
+    flash[:success] = 'Crop was successfully destroyed.'
+    redirect_to farm_plot_crops_path
   end
 
   private

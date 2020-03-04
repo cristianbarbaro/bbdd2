@@ -25,7 +25,8 @@ class SpeciesController < ApplicationController
     @species = Species.new(species_params)
 
     if @species.save
-      redirect_to @species, notice: 'Species was successfully created.'
+      flash[:success] = 'Species was successfully created.'
+      redirect_to @species
     else
       render :new
     end
@@ -34,7 +35,8 @@ class SpeciesController < ApplicationController
   # PATCH/PUT /species/1
   def update
     if @species.update(species_params)
-      redirect_to @species, notice: 'Species was successfully updated.'
+      flash[:success] = 'Species was successfully updated.'
+      redirect_to @species
     else
       render :edit
     end
@@ -43,11 +45,13 @@ class SpeciesController < ApplicationController
   # DELETE /species/1
   def destroy
     if @species.plantations.length > 0
-      redirect_to @species, notice: 'Species could not be destroyed. Has plantations associated.'
+      flash[:danger] = 'Species could not be destroyed. Has plantations associated.'
+      redirect_to @species
       return
     end
     @species.destroy
-    redirect_to species_index_url, notice: 'Species was successfully destroyed.'
+    flash[:success] = 'Species was successfully destroyed.'
+    redirect_to species_index_url
   end
 
   private

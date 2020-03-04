@@ -25,7 +25,8 @@ class ProductApplicationsController < ApplicationController
   def create
     @product_application = @plot.product_applications.build(product_application_params)
     if @product_application.save
-      redirect_to farm_plot_product_applications_path(@farm, @plot), notice: 'Product application was successfully created.'
+      flash[:success] = 'Product application was successfully created.'
+      redirect_to farm_plot_product_applications_path(@farm, @plot)
     else
       render :new 
     end
@@ -34,7 +35,8 @@ class ProductApplicationsController < ApplicationController
   # PATCH/PUT /farms/:farm_id/plots/:plot_id/product_applications/:id
   def update
     if @product_application.update(product_application_params)
-      redirect_to farm_plot_product_application_path(@farm, @plot), notice: 'Product application was successfully updated.'
+      flash[:success] = 'Product application was successfully updated.'
+      redirect_to farm_plot_product_application_path(@farm, @plot)
     else
       render :edit
     end
@@ -43,7 +45,8 @@ class ProductApplicationsController < ApplicationController
   # DELETE /farms/:farm_id/plots/:plot_id/product_applications/:id
   def destroy
     @product_application.destroy
-    redirect_to farm_plot_product_applications_path, notice: 'Product application was successfully destroyed.'
+    flash[:success] = 'Product application was successfully destroyed.'
+    redirect_to farm_plot_product_applications_path
   end
 
   private

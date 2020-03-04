@@ -25,7 +25,8 @@ class FarmsController < ApplicationController
 
     if @farm.save
       current_user.farms << @farm
-      redirect_to @farm, notice: 'Farm was successfully created.'
+      flash[:success] = 'Farm was successfully created.'
+      redirect_to @farm
     else
       render :new
     end
@@ -34,7 +35,8 @@ class FarmsController < ApplicationController
   # PATCH/PUT /farms/1
   def update
     if @farm.update(farm_params)
-      redirect_to @farm, notice: 'Farm was successfully updated.'
+      flash[:success] = 'Farm was successfully updated.'
+      redirect_to @farm
     else
       render :edit
     end
@@ -43,7 +45,8 @@ class FarmsController < ApplicationController
   # DELETE /farms/1
   def destroy
     @farm.destroy
-    redirect_to farms_url, notice: 'Farm was successfully destroyed.'
+    flash[:success] = 'Farm was successfully destroyed.'
+    redirect_to farms_url
   end
 
   private

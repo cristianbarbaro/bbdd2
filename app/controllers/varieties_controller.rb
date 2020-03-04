@@ -3,7 +3,6 @@ class VarietiesController < ApplicationController
   before_action :set_variety, only: [:show, :edit, :update, :destroy]
 
   # GET /varieties
-  # GET /varieties.json
   def index
     @varieties = Variety.all
   end
@@ -26,7 +25,8 @@ class VarietiesController < ApplicationController
     @variety = Variety.new(variety_params)
 
     if @variety.save
-      redirect_to @variety, notice: 'Variety was successfully created.'
+      flash[:success] = 'Variety was successfully created.'
+      redirect_to @variety
     else
       render :new
     end
@@ -35,7 +35,8 @@ class VarietiesController < ApplicationController
   # PATCH/PUT /varieties/1
   def update
     if @variety.update(variety_params)
-      redirect_to @variety, notice: 'Variety was successfully updated.'
+      flash[:success] = 'Variety was successfully updated.'
+      redirect_to @variety
     else
       render :edit
     end
@@ -44,11 +45,13 @@ class VarietiesController < ApplicationController
   # DELETE /varieties/1
   def destroy
     if @variety.crops.length > 0
-      redirect_to @variety, notice: 'Variety could not be destroyed. Has crops associated.'
+      flash[:danger] = 'Variety could not be destroyed. Has crops associated.'
+      redirect_to @variety
       return
     end
     @variety.destroy
-    redirect_to varieties_url, notice: 'Variety was successfully destroyed.'
+    flash[:success] = 'Variety was successfully destroyed.'
+    redirect_to varieties_url
   end
 
   private

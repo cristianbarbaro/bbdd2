@@ -25,7 +25,8 @@ class ProblemsController < ApplicationController
     @problem = Problem.new(problem_params)
 
     if @problem.save
-      redirect_to @problem, notice: 'Problem was successfully created.'
+      flash[:success] = 'Problem was successfully created.'
+      redirect_to @problem
     else
       render :new
     end
@@ -34,7 +35,8 @@ class ProblemsController < ApplicationController
   # PATCH/PUT /problems/1
   def update
     if @problem.update(problem_params)
-      redirect_to @problem, notice: 'Problem was successfully updated.'
+      flash[:success] = 'Problem was successfully updated.'
+      redirect_to @problem
     else
       render :edit
     end
@@ -43,11 +45,13 @@ class ProblemsController < ApplicationController
   # DELETE /problems/1
   def destroy
     if @problem.plot_problems.length > 0
-      redirect_to @problem, notice: 'Problem could not be destroyed. Has crops associated.'
+      flash[:danger] = 'Problem could not be destroyed. Has crops associated.'
+      redirect_to @problem
       return
     end
       @problem.destroy
-      redirect_to problems_url, notice: 'Problem was successfully destroyed.'
+      flash[:success] = 'Problem was successfully destroyed.'
+      redirect_to problems_url
   end
 
   private

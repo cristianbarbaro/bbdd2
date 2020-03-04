@@ -25,7 +25,8 @@ class PlotsController < ApplicationController
     @plot = @farm.plots.build(plot_params)
 
     if @plot.save
-      redirect_to farm_plots_path(@farm), notice: 'Plot was successfully created.'
+      flash[:success] = 'Plot was successfully created.'
+      redirect_to farm_plots_path(@farm)
     else
       render :new
     end
@@ -34,7 +35,8 @@ class PlotsController < ApplicationController
   # PATCH/PUT /farms/:farm_id/plots/1
   def update
     if @plot.update(plot_params)
-      redirect_to farm_plot_path(@farm), notice: 'Plot was successfully updated.'
+      flash[:success] = 'Plot was successfully updated.'
+      redirect_to farm_plot_path(@farm)
     else
       render :edit
     end
@@ -43,7 +45,8 @@ class PlotsController < ApplicationController
   # DELETE /farms/:farm_id/plots/1
   def destroy
     @plot.destroy
-      redirect_to farm_plots_path, notice: 'Plot was successfully destroyed.'
+    flash[:success] = 'Plot was successfully destroyed.'
+    redirect_to farm_plots_path
   end
 
   private

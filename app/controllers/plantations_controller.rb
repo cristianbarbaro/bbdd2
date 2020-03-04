@@ -25,7 +25,8 @@ class PlantationsController < ApplicationController
   def create
     @plantation = @plot.plantations.build(plantation_params)
     if @plantation.save
-      redirect_to farm_plot_plantations_path(@farm, @plot), notice: 'Plantation was successfully created.'
+      flash[:success] = 'Plantation was successfully created.'
+      redirect_to farm_plot_plantations_path(@farm, @plot)
     else
       render :new
     end
@@ -34,7 +35,8 @@ class PlantationsController < ApplicationController
   # PATCH/PUT /farms/:farm_id/plots/:plot_id/plantations/:id
   def update
     if @plantation.update(plantation_params)
-      redirect_to farm_plot_plantation_path(@farm, @plot), notice: 'Plantation was successfully updated.'
+      flash[:success] = 'Plantation was successfully updated.'
+      redirect_to farm_plot_plantation_path(@farm, @plot)
     else
       render :edit
     end
@@ -43,7 +45,8 @@ class PlantationsController < ApplicationController
   # DELETE /farms/:farm_id/plots/:plot_id/plantations/1
   def destroy
     @plantation.destroy
-    redirect_to farm_plot_plantations_path, notice: 'Plantation was successfully destroyed.'
+    flash[:success] = 'Plantation was successfully destroyed.'
+    redirect_to farm_plot_plantations_path
   end
 
   private
