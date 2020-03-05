@@ -22,6 +22,18 @@
   </ul>
 </p>
 
+<p>
+  <strong>Users:</strong>
+  <ul>
+    <% @farm.users.each do |user| %>
+      <li><%= user.email %> - <%= link_to 'Remove', farm_destroy_user_path(@farm, user: {user_id: user.id}), method: :post %></li>
+    <% end %>  
+    <li><%= link_to 'Add user', farm_new_user_path(@farm) %></li>
+  </ul>
+</p>
+
+
+
 <div class="pull-right">
   <%= link_to 'Delete', @farm, class:'btn btn-danger', method: :delete, data: { confirm: '¿Are you sure?' }, title: 'Delete' %>
   <%= link_to 'Edit', edit_farm_path(@farm), class: "btn btn-success" %>
