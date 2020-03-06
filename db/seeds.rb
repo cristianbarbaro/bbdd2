@@ -49,7 +49,7 @@ farm_three = Farm.create({
 
 farm_four = Farm.create({
     name: "Farm four",
-    description: "Farm's user one"
+    description: "Farm's user four"
 })
 
 user_one.farms << farm_one
