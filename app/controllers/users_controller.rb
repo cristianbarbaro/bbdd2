@@ -17,7 +17,7 @@ class UsersController < ApplicationController
     if user_params[:user_id]
       @user = User.find(user_params[:user_id])
       change_roles(params)
-
+      flash[:success] = 'User was successfully updated.'
       redirect_to user_path @user
     else
       render :edit
