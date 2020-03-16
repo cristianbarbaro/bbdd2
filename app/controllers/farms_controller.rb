@@ -34,11 +34,20 @@ class FarmsController < ApplicationController
 
   # PATCH/PUT /farms/1
   def update
-    if @farm.update(farm_params)
-      flash[:success] = 'Farm was successfully updated.'
-      redirect_to @farm
-    else
-      render :edit
+    begin
+      if @farm.update(farm_params)
+        flash[:success] = 'Farm was successfully updated.'
+        redirect_to @farm
+      else
+        render :edit
+      end
+    rescue ActiveRecord::StaleObjectError
+      @farm.reload.attributes = farm_params.reject do |attrb, value|
+        attrb.to_sym == :lock_version
+      end
+      flash[:danger] = "Another user has made a change to that record "+
+        "since you accessed the edit form."
+      render :edit, :status => :conflict
     end
   end
 
@@ -58,6 +67,6 @@ class FarmsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def farm_params
-      params.require(:farm).permit(:name, :description, :address)
+      params.require(:farm).permit(:name, :description, :address, :lock_version)
     end
 end
