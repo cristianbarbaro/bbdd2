@@ -18,6 +18,8 @@
   <%= form.text_field :url %>
   
   <%= form.text_area :description %>
+
+  <%= form.hidden_field :lock_version %>
   
   <div class="actions">
     <%= form.submit "Save", class: "btn btn-success" %>

@@ -34,12 +34,7 @@ class CropsController < ApplicationController
 
   # PATCH/PUT /farms/:farm_id/plots/:plot_id/crops/:id
   def update
-    if @crop.update(crop_params)
-      flash[:success] = 'Crop was successfully updated.'
-      redirect_to farm_plot_crop_path(@farm, @plot)
-    else
-      render :edit
-    end
+    update_model @crop, crop_params, farm_plot_crop_path(@farm, @plot)
   end
 
   # DELETE /farms/:farm_id/plots/:plot_id/crops/:id
@@ -57,6 +52,6 @@ class CropsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def crop_params
-      params.require(:crop).permit(:comment, :amount, :variety_id)
+      params.require(:crop).permit(:comment, :amount, :variety_id, :lock_version)
     end
 end

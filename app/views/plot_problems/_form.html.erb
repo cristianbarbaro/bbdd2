@@ -13,6 +13,8 @@
 
   <%= form.text_area :comment %>
 
+  <%= form.hidden_field :lock_version %>
+
   <%= form.select(:problem_id, problems_for_select, :prompt => 'Select') %>
 
   <div class="actions">

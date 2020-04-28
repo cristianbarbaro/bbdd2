@@ -34,12 +34,7 @@ class VarietiesController < ApplicationController
 
   # PATCH/PUT /varieties/1
   def update
-    if @variety.update(variety_params)
-      flash[:success] = 'Variety was successfully updated.'
-      redirect_to @variety
-    else
-      render :edit
-    end
+    update_model @variety, variety_params, @variety
   end
 
   # DELETE /varieties/1
@@ -62,6 +57,6 @@ class VarietiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def variety_params
-      params.require(:variety).permit(:name, :scientific_name, :url, :description)
+      params.require(:variety).permit(:name, :scientific_name, :url, :description, :lock_version)
     end
 end

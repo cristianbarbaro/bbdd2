@@ -34,12 +34,7 @@ class ProblemsController < ApplicationController
 
   # PATCH/PUT /problems/1
   def update
-    if @problem.update(problem_params)
-      flash[:success] = 'Problem was successfully updated.'
-      redirect_to @problem
-    else
-      render :edit
-    end
+    update_model @problem, problem_params, @problem
   end
 
   # DELETE /problems/1
@@ -62,6 +57,6 @@ class ProblemsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def problem_params
-      params.require(:problem).permit(:name, :scientific_name, :url, :description)
+      params.require(:problem).permit(:name, :scientific_name, :url, :description, :lock_version)
     end
 end

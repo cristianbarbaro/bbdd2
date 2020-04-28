@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_16_120919) do
+ActiveRecord::Schema.define(version: 2020_04_27_145433) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.bigint "plot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
     t.index ["plot_id"], name: "index_crops_on_plot_id"
     t.index ["variety_id"], name: "index_crops_on_variety_id"
   end
@@ -47,6 +48,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.bigint "plot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
     t.index ["plot_id"], name: "index_plantations_on_plot_id"
     t.index ["species_id"], name: "index_plantations_on_species_id"
   end
@@ -57,6 +59,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.bigint "plot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
     t.index ["plot_id"], name: "index_plot_problems_on_plot_id"
     t.index ["problem_id"], name: "index_plot_problems_on_problem_id"
   end
@@ -69,6 +72,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.bigint "farm_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
     t.index ["farm_id"], name: "index_plots_on_farm_id"
   end
 
@@ -79,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
   end
 
   create_table "product_applications", force: :cascade do |t|
@@ -88,6 +93,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.bigint "plot_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
     t.index ["plot_id"], name: "index_product_applications_on_plot_id"
     t.index ["product_id"], name: "index_product_applications_on_product_id"
   end
@@ -98,6 +104,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -114,6 +121,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
   end
 
   create_table "users", force: :cascade do |t|
@@ -143,6 +151,7 @@ ActiveRecord::Schema.define(version: 2020_03_16_120919) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "lock_version"
   end
 
   add_foreign_key "crops", "plots"

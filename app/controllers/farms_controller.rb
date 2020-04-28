@@ -34,21 +34,7 @@ class FarmsController < ApplicationController
 
   # PATCH/PUT /farms/1
   def update
-    begin
-      if @farm.update(farm_params)
-        flash[:success] = 'Farm was successfully updated.'
-        redirect_to @farm
-      else
-        render :edit
-      end
-    rescue ActiveRecord::StaleObjectError
-      @farm.reload.attributes = farm_params.reject do |attrb, value|
-        attrb.to_sym == :lock_version
-      end
-      flash[:danger] = "Another user has made a change to that record "+
-        "since you accessed the edit form."
-      render :edit, :status => :conflict
-    end
+    update_model @farm, farm_params, @farm
   end
 
   # DELETE /farms/1

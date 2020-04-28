@@ -34,12 +34,7 @@ class PlotsController < ApplicationController
 
   # PATCH/PUT /farms/:farm_id/plots/1
   def update
-    if @plot.update(plot_params)
-      flash[:success] = 'Plot was successfully updated.'
-      redirect_to farm_plot_path(@farm)
-    else
-      render :edit
-    end
+    update_model @plot, plot_params, farm_plot_path(@farm)
   end
 
   # DELETE /farms/:farm_id/plots/1
@@ -57,6 +52,6 @@ class PlotsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plot_params
-      params.require(:plot).permit(:identifier, :description, :surface, :greenhouse)
+      params.require(:plot).permit(:identifier, :description, :surface, :greenhouse, :lock_version)
     end
 end

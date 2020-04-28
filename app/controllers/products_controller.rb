@@ -34,12 +34,7 @@ class ProductsController < ApplicationController
 
   # PATCH/PUT /products/1
   def update
-    if @product.update(product_params)
-      flash[:success] = 'Product was successfully updated.'
-      redirect_to @product
-    else
-      render :edit
-    end
+    update_model @product, product_params, @product
   end
 
   # DELETE /products/1
@@ -62,6 +57,6 @@ class ProductsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def product_params
-      params.require(:product).permit(:name, :composition, :description)
+      params.require(:product).permit(:name, :composition, :description, :lock_version)
     end
 end

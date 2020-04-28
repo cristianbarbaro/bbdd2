@@ -34,12 +34,7 @@ class SpeciesController < ApplicationController
 
   # PATCH/PUT /species/1
   def update
-    if @species.update(species_params)
-      flash[:success] = 'Species was successfully updated.'
-      redirect_to @species
-    else
-      render :edit
-    end
+    update_model @species, species_params, @species
   end
 
   # DELETE /species/1
@@ -62,6 +57,6 @@ class SpeciesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def species_params
-      params.require(:species).permit(:name)
+      params.require(:species).permit(:name, :lock_version)
     end
 end

@@ -34,12 +34,7 @@ class PlantationsController < ApplicationController
 
   # PATCH/PUT /farms/:farm_id/plots/:plot_id/plantations/:id
   def update
-    if @plantation.update(plantation_params)
-      flash[:success] = 'Plantation was successfully updated.'
-      redirect_to farm_plot_plantation_path(@farm, @plot)
-    else
-      render :edit
-    end
+    update_model @plantation, plantation_params, farm_plot_plantations_path(@farm, @plot)
   end
 
   # DELETE /farms/:farm_id/plots/:plot_id/plantations/1
@@ -57,6 +52,6 @@ class PlantationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def plantation_params
-      params.require(:plantation).permit(:comment, :amount, :species_id)
+      params.require(:plantation).permit(:comment, :amount, :species_id, :lock_version)
     end
 end
