@@ -35,6 +35,8 @@
         * `two@two.com`
         * `three@three.com`
 
+* El archivo `modelo_datos.svg` muestra un modelo de la base de datos.
+
 * Los datos que se cargan por defecto en la base de datos están en el archivo `db/seeds.rb`.
 
 * Las definiciones de las relaciones entre modelos están en `app/models`.
