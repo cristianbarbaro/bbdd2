@@ -5,7 +5,8 @@
 
 # cambiar algo  del código para que tire error y no complete la transacción.
 
-# rails rails db:reset && rails db:seed para resetear la base de datos con datos de pruebas
+# Para resetear la base de datos con datos de pruebas ejecutar:
+# sudo docker exec -it farms rails db:reset 
 
 User.transaction do
 	# Creación de un usuario:
